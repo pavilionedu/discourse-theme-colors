@@ -80,6 +80,7 @@
 #               color scheme should set.
 #
 #               ### ``primary``
+#
 #               The primary variable sets the color of text and icons throughout
 #               the forum. Importantly the primary color should always have a 
 #               high contrast against the secondary color. Shades of the primary 
@@ -91,6 +92,7 @@
 #               to use hot pink here (save that for your "tertiary" color).
 #
 #               ### ``secondary``
+#
 #               Think of the ``secondary`` variable as the "background" color,
 #               as its main role is to set the background color of the forum. As
 #               noted above, it should have a high contrast with the primary color,
@@ -101,6 +103,7 @@
 #               "Create Topic" in the composer).
 #
 #               ### ``tertiary``
+#
 #               Think of the ``tertiary`` color as the "feature" color. If you
 #               have a brand color, it should probably be the ``tertiary`` color.
 #               The ``tertiary`` color is meant to catch the eye and stand out
@@ -130,6 +133,7 @@
 #               specific roles.
 #
 #               ### ``quaternary``
+#
 #               This variable is used to set the background color of navigation
 #               links, e.g. "latest" or "top" in the topic list, or "Summary" or
 #               "Activity" in user profiles. Interestingly, the pronunciation of
@@ -137,6 +141,7 @@
 #               in the references).
 #
 #               ### ``header_background`` and ``header_primary``
+#
 #               These variables should be self explanatory now we know what 
 #               "primary" means in the context of a color scheme (i.e. the text
 #               color). A header with a background color different from the rest
@@ -144,6 +149,7 @@
 #               the forum.
 #
 #               ### ``highlight``
+#
 #               The ``highlight`` color is primarily used in two contexts. 
 #               Firstly, to briefly highlight posts or topic list items when 
 #               scrolling to them or when an action is being performed on them. 
