@@ -1,0 +1,161 @@
+/* learning_step
+* unit:        discourse_theme_development.3
+* number:      7
+* title:       Using color scheme variables
+* description: Now we know a bit about what a color scheme is and how to define 
+*              one (or two) in a theme, let's look at how color variables can be
+*              used in theme CSS. One thing you'll notice about the color scheme
+*              in this theme (if you changed the variables, switch them back so 
+*              you can follow along), is that the ``secondary`` color (#f2ddcc; 
+*              "Almond") does not have a great contrast with the color used for 
+*              the topic list item bottom borders.
+*
+*              First, let's understand how the topic list item bottom border 
+*              color is set. If you inspect the topic list item, you'll see it's 
+*              a table row (``tr``) with a CSS rule like the one you see below. 
+*              The color of the border is set as ``var(--primary-low)``. This is 
+*              a CSS variable (or "Custom Property"), a CSS feature you can 
+*              learn about in the Mozilla article in the references.
+*
+*              ```
+*              border-bottom: 1px solid var(--primary-low);
+*              ```
+*
+*              There are two types of color variables in Discourse, CSS variables
+*              and SASS variables. For more on SASS and SASS variables, refer 
+*              back to Unit 2 in this course (see the references). For each CSS 
+*              variable there is a SASS equivalent. The SASS equivalent of 
+*              ``var(--primary-low)`` is ``$primary-low``. The reason there are 
+*              two types is that CSS variables are required for certain features 
+*              - such as Automatic Dark Mode Switching - to work, whereas SASS 
+*              variables are easier to use in SASS functions. 
+*
+*              While both types will work in CSS rules, i.e. the topic list item 
+*              border rule could be ``1px solid $primary-low``, the feature  
+*              support of CSS variables is why you'll see them being used to set 
+*              element colors in Discourse CSS. You should use the CSS variable 
+*              version of Discourse's color variables in your themes.
+* references:  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties,
+*              https://github.com/pavilionedu/discourse-theme-css
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.3
+* number:      8
+* title:       Color scheme variable transformations
+* description: The other thing to understand about ``var(--primary-low)`` in 
+*              our topic list item border is the ``primary-low`` part. Each 
+*              color variable you set in a color scheme has multiple "transformations". 
+*              These transformations often take the form of a lightening or 
+*              darkening of the color. The definition of ``primary-low``, which 
+*              you can find in ``color_transformations.scss`` (see the references),
+*              looks like this:
+*
+*              ```
+*              $primary-low: dark-light-diff($primary, $secondary, 90%, -78%) !default;
+*              ```
+*
+*              The SASS function ``dark-light-diff``, which you can find in 
+*              ``variables.scss`` (see the references), increases the lightness 
+*              of the first color listed by one of the percentages listed. If 
+*              it's a light color scheme, the first percentage will be used, 
+*              the second if it's a dark color scheme (it uses the second color 
+*              listed to figure out whether it's a light or dark scheme).
+*
+*              This means ``primary-low`` is 90% lighter than our "Light" 
+*              ``primary`` if our "Light" scheme is enabled, or -78% lighter 
+*              than our "Dark" ``primary`` if our "Dark" scheme is enabled. Put 
+*              simply, black in a light scheme becomes grey, and white in a dark 
+*              scheme becomes...grey. Yup, ``primary-low`` is often some shade of grey.
+*
+*              ![50_shades_of_discourse_color_transformations](https://imgflip.com/i/5f3wfg)
+*
+*              In our case, that calculation has produced a grey that's a bit too
+*              light for our topic list item border. There are two ways to address 
+*              that. Firstly, you can set color transformations as variables
+*              in a color scheme to change the variable forum-wide. In our 
+*              "Light" scheme in our ``about.json`` add this variable, then 
+*              refresh the preview
+*
+*              ```
+*              "primary-low": "cccccc"
+*              ```
+*
+*              You'll see the ``primary-low``, used in our topic list item border 
+*              is now a darker grey. Be careful with this approach however as 
+*              transformations like ``primary-low`` are used for lots of subtle 
+*              things like borders and drop-shadows. It may create some unwanted
+*              side effects that are hard to pin down.
+*
+*              The other way we can address this overly-light transformation, is
+*              by changing the transformation we're using for this rule. Each 
+*              main color variable has multiple transformations, which generally 
+*              follow a suffix pattern of "very-low" (lighter (or darker if dark 
+*              theme)) "low" (lighter/darker), "medium" (moderately lighter/darker) 
+*              and "high" (slightly lighter/darker) (for a full list see 
+*              ``color_transformations.scss``). In this case we want less lightness, 
+*              so try changing ``primary-low`` to ``primary-medium`` in the CSS 
+*              rule below.
+*
+*              Go back to your Theme Creator preview, refresh the page and you'll
+*              see we now have a darker topic list item border.
+* references:  app/assets/stylesheets/common/foundation/color_transformations.scss,
+*              app/assets/stylesheets/common/foundation/variables.scss
+*/
+tr {
+  border-bottom: 1px solid var(--primary-low);
+}
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.3
+* number:      9
+* title:       The importance of getting the color scheme right
+* description: Now that we understand a bit about how Discourse's color scheme
+*              variables are used and transformed, we can see how important the
+*              choice of the main color scheme variables is in developing a good 
+*              theme. The transformations of those variables are used throughout 
+*              the CSS to set a wide range of element styles, often in quite 
+*              subtle ways.
+*
+*              If you find yourself going down a rabbit-hole of tweaking the use
+*              of color transformations on multiple elements, have another think
+*              about whether you've chosen the right mixture of ``primary``, 
+*              ``secondary`` and ``tertiary`` colors. You may decide that yes, 
+*              you've actually got it right, and the multiple tweaks are necessary.
+*              Make that decision the right way by spending a decent amount of
+*              time on those main color scheme colors.
+*/
+/* /learning_step */
+
+/* learning_step
+* unit:        discourse_theme_development.3
+* number:      10
+* title:       Go through every element and check every state
+* description: One of the most common issues that arises when you change the color 
+*              variables is with the color changes that occur on the "hover",
+*              "active" and other "states" of elements. These kind of issues,
+*              not immediately obvious when just scrolling through the topic 
+*              list, are often the difference between a theme that feels 
+*              amateurish and one that feels professional.
+*
+*              The best way to go through every element and their states is to
+*              use the "Styleguide" on the Theme Creator. On your Theme Creator
+*              preview page, click "Styleguide". You may find it navigates you to
+*              the styleguide, but removes your theme. If this happens, go back 
+*              to your preview, copy the query param in the url, e.g.
+*              ``?preview_theme_id=5089``, go back to the stylguide, add the 
+*              query param you copied and go directly that that url. It should 
+*              look like this
+*
+*              ```
+*              https://theme-creator.discourse.org/styleguide?preview_theme_id=5089
+*              ```
+*
+*              Once you have your theme previewed on the Styleguide, go through 
+*              every Atom, Molecule and Organism with your style applied. It's 
+*              very likely you'll need to make a few CSS tweaks for certain 
+*              elements or states, keeping in mind the importance of getting the
+*              main color variables right.
+*/
+/* /learning_step */

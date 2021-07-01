@@ -1,0 +1,19 @@
+{
+  "name": "Discourse Theme Colors",
+  "about_url": "https://github.com/pavilionedu/discourse-theme-colors.git",
+  "license_url": "https://github.com/pavilionedu/discourse-theme-colors/blob/master/LICENSE.txt",
+  "authors": "Angus McLeod",
+  "theme_version": "0.1.0",
+  "assets": {},
+  "color_schemes": {
+    "Light": {
+      "primary": "333333",
+      "secondary": "F2DDCC",
+      "tertiary": "d55f2b",
+      "quaternary": "FB4F47",
+      "header_background": "276359",
+      "header_primary": "ffffff",
+      "highlight": "cf6147"
+    }
+  }
+}

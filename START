@@ -1,0 +1,255 @@
+# learning_course
+# key:         discourse_theme_development
+# /learning_course
+
+# learning_unit
+# course:       discourse_theme_development
+# number:       3
+# title:        Working with color schemes in Discourse Themes
+# description:  This unit will teach you about working with color schemes in 
+#               Discourse Themes. Make sure you've completed "Introduction to 
+#               Discourse Theme Development" before starting this unit. When 
+#               you're ready to start, clone the unit theme listed in the 
+#               references and start watching it on the Discourse Theme creator.
+# references:   https://github.com/pavilionedu/discourse-theme-introduction,
+                https://theme-creator.discourse.org
+# /learning_unit
+
+# learning_step
+# unit:         discourse_theme_development.3
+# number:       1
+# title:        What is a color scheme?
+# description:  Discourse lets you set color schemes for your forum. If you want
+#               to get a sense of what a color scheme is and why you should care
+#               about it, start by doing some background reading on color schemes
+#               in web design.
+#
+#               There are too many different ways to think about color schemes
+#               to recommend a specific explanation or course, but I would 
+#               recommend trying out some of the color wheel tools or libraries,
+#               such as Adobe Color (color.adobe.com). I used the theme linked 
+#               in the references for this theme's color scheme.
+#
+#               In particular, have a think about what colors suit
+#               the brand and culture of your forum. How do you want your users
+#               to feel when they look at your forum? What associations should
+#               the colors of your forum create for them?
+#
+#               * One thing to note here is that Discourse uses "Color Scheme"
+#                 and "Color Palette" interchangeably. They are the same thing.
+#                 We're going to use "Color Scheme" for the rest of this unit.
+# references:   https://color.adobe.com/color%20theme_2c290ff7d20aef2fd30305208a101992-color-theme-17899582
+# /learning_step
+
+# learning_step
+# unit:         discourse_theme_development.3
+# number:       2
+# title:        How to define a color scheme
+# description:  You define a color scheme in the about.json file of a theme. If 
+#               you look in the about.json file of this theme you'll see an 
+#               attribute called ``color_schemes``, where you can define 
+#               multiple color schemes. Each color scheme has a name, set as the
+#               key of the scheme object, and a list of variables assigned "hex 
+#               triplets" in the scheme object. For more on what a "hex triplet"
+#               is, and the different forms it can take (6 or 3 digit), check 
+#               out the Wikipedia article linked in the references.
+#
+#               It's worth noting here that you can also define a color scheme 
+#               by itself, without anything else in the theme. The process is 
+#               the same, so we're not going to cover it separately here, 
+#               however check out the meta.discourse.org topic in the references 
+#               on stand-alone schemes.
+# references:   https://en.wikipedia.org/wiki/Web_colors#Hex_triplet,
+#               https://meta.discourse.org/t/61196
+# /learning_step
+
+# learning_step
+# unit:         discourse_theme_development.3
+# number:       3
+# title:        Color scheme variables
+# description:  As we saw in the last step, a color scheme is made up of a 
+#               number of color variables. These variables are used throughout 
+#               the Discourse CSS to set the colors of different elements. Each
+#               variable has a default value, which you can see in the default
+#               Discourse color scheme "Light" (see "Customize" > "Colors", if
+#               it's not there, just click "New" then select "Light" to re-add
+#               it). If you don't set a variable in your scheme, the default
+#               color for that variable will be used.
+#
+#               Let's start by going through the three main variables that every 
+#               color scheme should set.
+#
+#               ### ``primary``
+#               The primary variable sets the color of text and icons throughout
+#               the forum. Importantly the primary color should always have a 
+#               high contrast against the secondary color. Shades of the primary 
+#               color are also used throughout the forum for design elements such 
+#               as borders, shadows, and overlays. That usage is less noticeable 
+#               than the text color, however it will contribute to the overall
+#               impression the forum creates. It's good to keep this color
+#               simple and not particularly eye catching. You probably don't want 
+#               to use hot pink here (save that for your "tertiary" color).
+#
+#               ### ``secondary``
+#               Think of the ``secondary`` variable as the "background" color,
+#               as its main role is to set the background color of the forum. As
+#               noted above, it should have a high contrast with the primary color,
+#               particularly so that text (primary) stands out on the background
+#               (secondary). ``secondary`` also works as a sort of inverse primary
+#               color in some situations, in particular on buttons without a 
+#               primary or secondary background (e.g. a "call to action" like 
+#               "Create Topic" in the composer).
+#
+#               ### ``tertiary``
+#               Think of the ``tertiary`` color as the "feature" color. If you
+#               have a brand color, it should probably be the ``tertiary`` color.
+#               The ``tertiary`` color is meant to catch the eye and stand out
+#               to the user. It's used in places like the background for "call
+#               to action"  buttons, as the highlight color in the notification
+#               list and as the background to topic list item count bubbles. 
+#               Again, you want the tertiary to have a relatively high contrast
+#               with the primary and secondary colors to make it stand out on
+#               the page. This is the place to use hot pink if you're into that.
+#
+#               Start your color scheme by defining these three variables to be
+#               complimentary with each other, and with the brand or feeling you
+#               want your color scheme to evoke. Try that out right now by 
+#               changing these variable in the color scheme in this theme (hot 
+#               pink's hex code is FF69B4. Try setting it as ``tertiary`` :) ).
+#
+#               Note that when you change a color scheme variable you have to 
+#               do a page refresh for Discourse to pick up the new color.
+# /learning_step
+
+# learning_step
+# unit:         discourse_theme_development.3
+# number:       4
+# title:        Color scheme variables (continued)
+# description:  Once you've defined your ``primary`` ``secondary`` and ``tertiary``
+#               colors, then move on to set the other variables, which have more
+#               specific roles.
+#
+#               ### ``quaternary``
+#               This variable is used to set the background color of navigation
+#               links, e.g. "latest" or "top" in the topic list, or "Summary" or
+#               "Activity" in user profiles. Interestingly, the pronunciation of
+#               "quaternary" is culturally specific (see the dictionary link
+#               in the references).
+#
+#               ### ``header_background`` and ``header_primary``
+#               These variables should be self explanatory now we know what 
+#               "primary" means in the context of a color scheme (i.e. the text
+#               color). A header with a background color different from the rest
+#               of the forum can work as a distinguishing feature, or accent, for
+#               the forum.
+#
+#               ### ``highlight``
+#               The ``highlight`` color is primarily used in two contexts. 
+#               Firstly, to briefly highlight posts or topic list items when 
+#               scrolling to them or when an action is being performed on them. 
+#               Secondly, when hovering over items in the header dropdown menus. 
+#               It is also used for highlighting text in posts, which is actually 
+#               available out of the box in Discourse using ``<mark>`` blocks in 
+#               the composer, for example:
+#
+#               ```
+#               <mark>I will be highlighted!</mark>
+#               ```
+#
+#               This is a bit of a "power user" feature however, so you don't see
+#               it that often.
+#
+#               ### ``danger``, ``success`` and ``love``
+#               These three variables are used to indicate particular actions, or
+#               results of actions, that are generally associated with particular
+#               colors, namely (in order) red, green and pink. ``danger``, red by
+#               default, is used to indicate deletion, or an error. ``success``,
+#               green by default, indicates a a successful action, or a "right
+#               answer" (e.g. in the Solved Plugin). ``love``, pink by default,
+#               is used for the "like" button, identified by the "heart" symbol.
+#               When changing these colors keep in mind that users will have
+#               pre-existing associations between those colors and actions. 
+#               You'll notice that I haven't set these variables in this theme's 
+#               color scheme, which means the default colors will be used for 
+#               these variables.
+# /learning_step
+
+# learning_step
+# unit:         discourse_theme_development.3
+# number:       5
+# title:        Using multiple color schemes
+# description:  There are three interrelated ways to think about using multiple 
+#               color schemes in your Discourse.
+#
+#               Firstly, it's possible to let your users select multiple themes,
+#               and different themes can have different color schemes. If 
+#               "Theme can be selected by users" is selected for a theme in the 
+#               Theme Admin UI (see Customize > Themes) a user can select it in
+#               their "Interface" preferences. However, if the only difference 
+#               between your themes is the color scheme, this is not the way you 
+#               should arrange things. You might still want seperate themes if 
+#               you want want different CSS or Javascript in each theme, but if 
+#               color is the only difference move on to the second way.
+#
+#               Secondly, you can let users select different color schemes for
+#               the same theme. To have one theme with multiple color schemes,
+#               add both schemes to the about.json file of the theme. We're going
+#               to do that in this theme in the next step. Also make sure that 
+#               you select "Color scheme can be selected by users" in the Color
+#               Scheme Admin UI (see Customize > Colors). The user will then be 
+#               able to select the color scheme they like in their "Interface" 
+#               preferences.
+#
+#               Lastly, you can set a "dark mode" color scheme to be applied when
+#               the user's device is in "dark mode". You set that using the 
+#               ``default dark mode color scheme id`` site setting. The user can
+#               then turn on automatic dark mode switching in their "Interface"
+#               preferences.
+#
+#               Given those different settings, here's a good way to arrange  
+#               your theme and color schemes:
+#
+#               1. Have a single theme with "Light" and "Dark" color schemes
+#                  defined in the about.json file. Set the "Light" scheme as
+#                  the "Color Palette" for the theme in the Theme Admin UI
+#                  (remember, "Color Palette" and "Color Scheme" is the same 
+#                  thing).
+#
+#               2. Check the "Color scheme can be selected by users" box in
+#                  the "Dark" scheme, so the user can switch between the
+#                  theme scheme (i.e. "light") and the "Dark" scheme in
+#                  their "Interface" preferences.
+#
+#               3. Set the "Dark" color scheme as the ``default dark mode
+#                  color scheme id`` so users can turn on automatic dark mode
+#                  switching in their "Interface" preferences. Then, if their
+#                  device is in dark mode, the "Dark" scheme will automatically 
+#                  be applied.
+# /learning_step
+
+# learning_step
+# unit:         discourse_theme_development.3
+# number:       6
+# title:        Creating a dark color scheme
+# description:  Now we know a bit about color schemes, what the variables do and
+#               how to use multiple schemes, let's create a dark color scheme in
+#               this theme's ``about.json`` file.
+#
+#               Start by considering what the "dark" version of your ``primary``
+#               ``secondary`` and ``tertiary`` colors would be. Often, folks will
+#               just swap the ``primary`` and ``secondary`` colors. You should
+#               start by doing that, and keeping all the other variables the 
+#               same. Even if you keep a variable the same, you still need to 
+#               define it in the "dark" scheme, otherwise it will default to 
+#               _discourse's_ default colors. It doesn't default to the color 
+#               set in your light theme's variables. 
+#
+#               Try creating a dark scheme for this theme and see what it looks 
+#               like in the theme creator. Remember, in order for Discourse to 
+#               pick up color scheme changes you'll need to refresh the page 
+#               once the change is made. Also, as the Theme Creator doesn't have 
+#               all the normal Discourse settings you have as an admin, you'll 
+#               need to change the "Color Palette" on the theme in the "My Themes" 
+#               UI to see the dark color scheme (remember to refresh the page on 
+#               your theme preview after you change the theme's color scheme).
+# /learning_step
