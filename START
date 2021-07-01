@@ -11,7 +11,7 @@
 #               Discourse Theme Development" before starting this unit. When 
 #               you're ready to start, clone the unit theme listed in the 
 #               references and start watching it on the Discourse Theme creator.
-# references:   https://github.com/pavilionedu/discourse-theme-introduction,
+# references:   https://github.com/pavilionedu/discourse-theme-introduction
                 https://theme-creator.discourse.org
 # /learning_unit
 
@@ -59,7 +59,7 @@
 #               the same, so we're not going to cover it separately here, 
 #               however check out the meta.discourse.org topic in the references 
 #               on stand-alone schemes.
-# references:   https://en.wikipedia.org/wiki/Web_colors#Hex_triplet,
+# references:   https://en.wikipedia.org/wiki/Web_colors#Hex_triplet
 #               https://meta.discourse.org/t/61196
 # /learning_step
 

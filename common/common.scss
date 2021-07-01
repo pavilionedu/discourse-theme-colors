@@ -35,7 +35,7 @@
 *              support of CSS variables is why you'll see them being used to set 
 *              element colors in Discourse CSS. You should use the CSS variable 
 *              version of Discourse's color variables in your themes.
-* references:  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties,
+* references:  https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 *              https://github.com/pavilionedu/discourse-theme-css
 /* /learning_step */
 
@@ -99,7 +99,7 @@
 *
 *              Go back to your Theme Creator preview, refresh the page and you'll
 *              see we now have a darker topic list item border.
-* references:  app/assets/stylesheets/common/foundation/color_transformations.scss,
+* references:  app/assets/stylesheets/common/foundation/color_transformations.scss
 *              app/assets/stylesheets/common/foundation/variables.scss
 */
 tr {
