@@ -90,8 +90,8 @@
 *              The other way we can address this overly-light transformation, is
 *              by changing the transformation we're using for this rule. Each 
 *              main color variable has multiple transformations, which generally 
-*              follow a suffix pattern of "very-low" (lighter (or darker if dark 
-*              theme)) "low" (lighter/darker), "medium" (moderately lighter/darker) 
+*              follow a suffix pattern of "very-low" (lighter, or darker if dark 
+*              theme) "low" (lighter/darker), "medium" (moderately lighter/darker) 
 *              and "high" (slightly lighter/darker) (for a full list see 
 *              ``color_transformations.scss``). In this case we want less lightness, 
 *              so try changing ``primary-low`` to ``primary-medium`` in the CSS 

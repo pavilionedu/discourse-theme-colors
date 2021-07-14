@@ -7,9 +7,8 @@
 # number:       3
 # title:        Working with color schemes
 # description:  This unit will teach you about working with color schemes in 
-#               Discourse themes. This is the second unit in the Introduction to 
-#               Discourse Theme Development course. Make sure you've completed 
-#               the [Getting Started unit](https://github.com/pavilionedu/discourse-theme-introduction) 
+#               Discourse themes. This is the third unit in the Discourse Theme 
+#               Development course. Make sure you've completed the [Getting Started unit](https://github.com/pavilionedu/discourse-theme-introduction) 
 #               before starting this one.
 #
 #               When you're ready to start, clone the unit theme listed in the 
@@ -194,7 +193,8 @@
 #               Firstly, it's possible to let your users select multiple themes,
 #               and different themes can have different color schemes. If 
 #               "Theme can be selected by users" is selected for a theme in the 
-#               Theme Admin UI (see Customize > Themes) a user can select it in
+#               Theme Admin UI (see Customize > Themes as an admin in a normal 
+#               Discourse, not the Theme Creator) a user can select it in
 #               their "Interface" preferences. However, if the only difference 
 #               between your themes is the color scheme, this is not the way you 
 #               should arrange things. You might still want seperate themes if 
