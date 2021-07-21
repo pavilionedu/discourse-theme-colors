@@ -68,8 +68,6 @@
 *              simply, black in a light scheme becomes grey, and white in a dark 
 *              scheme becomes...grey. Yup, ``primary-low`` is often some shade of grey.
 *
-*              ![50_shades_of_discourse_color_transformations](https://i.imgflip.com/5f3wfg.jpg)
-*
 *              In our case, that calculation has produced a grey that's a bit too
 *              light for our topic list item border. There are two ways to address 
 *              that. Firstly, you can set color transformations as variables
