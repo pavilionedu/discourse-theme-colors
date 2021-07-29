@@ -262,4 +262,5 @@
 #               need to change the "Color Palette" on the theme in the "My Themes" 
 #               UI to see the dark color scheme (remember to refresh the page on 
 #               your theme preview after you change the theme's color scheme).
+# next_step:    common/common.scss
 # /learning_step
